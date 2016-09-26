@@ -45,7 +45,7 @@ public class EmployeeFrame extends javax.swing.JFrame
         clearButton.setEnabled(false);
         updateButton.setEnabled(false);
         saveButton.setEnabled(false);
-        jComboBox1.setSelectedIndex(-1);
+        jComboBoxEmployees.setSelectedIndex(-1);
         
         // Make a array of employee textFields
         JTextField[] flds = {empNumberTextField, firstNameTextField, lastNameTextField, 
@@ -122,7 +122,7 @@ public class EmployeeFrame extends javax.swing.JFrame
         mapWithKeyRadioButton = new javax.swing.JRadioButton();
         jPanel4 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox();
+        jComboBoxEmployees = new javax.swing.JComboBox();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         loadCSVMenuItem = new javax.swing.JMenuItem();
@@ -496,11 +496,11 @@ public class EmployeeFrame extends javax.swing.JFrame
         jLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel1.setText("Employees:");
 
-        jComboBox1.addItemListener(new java.awt.event.ItemListener()
+        jComboBoxEmployees.addItemListener(new java.awt.event.ItemListener()
         {
             public void itemStateChanged(java.awt.event.ItemEvent evt)
             {
-                jComboBox1ItemStateChanged(evt);
+                jComboBoxEmployeesItemStateChanged(evt);
             }
         });
 
@@ -515,7 +515,7 @@ public class EmployeeFrame extends javax.swing.JFrame
                         .addComponent(jLabel1))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(54, 54, 54)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jComboBoxEmployees, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(61, 61, 61))
         );
         jPanel4Layout.setVerticalGroup(
@@ -524,7 +524,7 @@ public class EmployeeFrame extends javax.swing.JFrame
                 .addGap(14, 14, 14)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jComboBoxEmployees, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -706,20 +706,19 @@ public class EmployeeFrame extends javax.swing.JFrame
             statusLabel.setText("Tree map with EmpNo key radio button selected.");
             enableEmployeeSelection(true);
         }
-
     }//GEN-LAST:event_treeMapRadioButtonActionPerformed
 
     private void cmbKeys_build()
     {
         loading=1;
-        jComboBox1.removeAllItems();
+        jComboBoxEmployees.removeAllItems();
         if (rawHashRadioButton.isSelected())
         {
             Set<Long> keys = emp.keySet();
             ArrayList<Long> akeys = new ArrayList<>(keys);
             for (Long e:akeys)
             {
-                jComboBox1.addItem(e);
+                jComboBoxEmployees.addItem(e);
             }
         }
         else if (treeMapRadioButton.isSelected())
@@ -728,7 +727,7 @@ public class EmployeeFrame extends javax.swing.JFrame
             for (Map.Entry<Long,Employee> entry: treemap.entrySet())
             {
                 Long k=entry.getKey();
-                jComboBox1.addItem(k);
+                jComboBoxEmployees.addItem(k);
             }
         }
         else if (mapWithKeyRadioButton.isSelected())
@@ -736,10 +735,10 @@ public class EmployeeFrame extends javax.swing.JFrame
             for (Map.Entry<String,Employee> entry : empByName.entrySet())
             {
                 String name=entry.getKey();
-                jComboBox1.addItem(name);
+                jComboBoxEmployees.addItem(name);
             }
         }
-        jComboBox1.setSelectedIndex(-1);
+        jComboBoxEmployees.setSelectedIndex(-1);
         for (JTextField f: fields)
         {
             f.setText("");
@@ -784,8 +783,8 @@ public class EmployeeFrame extends javax.swing.JFrame
     
     private void previousButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_previousButtonActionPerformed
     {//GEN-HEADEREND:event_previousButtonActionPerformed
-        if (!(jComboBox1.getSelectedIndex() <= 0)) {
-            jComboBox1.setSelectedIndex(jComboBox1.getSelectedIndex() - 1);
+        if (!(jComboBoxEmployees.getSelectedIndex() <= 0)) {
+            jComboBoxEmployees.setSelectedIndex(jComboBoxEmployees.getSelectedIndex() - 1);
             forwardButton.setEnabled(true);
         }
         else {
@@ -797,8 +796,8 @@ public class EmployeeFrame extends javax.swing.JFrame
 
     private void forwardButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_forwardButtonActionPerformed
     {//GEN-HEADEREND:event_forwardButtonActionPerformed
-        if (jComboBox1.getSelectedIndex()<jComboBox1.getItemCount()-1){
-            jComboBox1.setSelectedIndex((jComboBox1.getSelectedIndex()+1));
+        if (jComboBoxEmployees.getSelectedIndex()< jComboBoxEmployees.getItemCount()-1){
+            jComboBoxEmployees.setSelectedIndex((jComboBoxEmployees.getSelectedIndex()+1));
             previousButton.setEnabled(true);
         }
         else {
@@ -839,7 +838,7 @@ public class EmployeeFrame extends javax.swing.JFrame
         for (JTextField f: fields)
             f.setText("");
 
-        jComboBox1.setSelectedIndex(-1);
+        jComboBoxEmployees.setSelectedIndex(-1);
         buttonGroup1.clearSelection();
         statusLabel.setText("");
         
@@ -860,8 +859,8 @@ public class EmployeeFrame extends javax.swing.JFrame
         jd.setVisible(rootPaneCheckingEnabled);
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
-    private void jComboBox1ItemStateChanged(java.awt.event.ItemEvent evt)//GEN-FIRST:event_jComboBox1ItemStateChanged
-    {//GEN-HEADEREND:event_jComboBox1ItemStateChanged
+    private void jComboBoxEmployeesItemStateChanged(java.awt.event.ItemEvent evt)//GEN-FIRST:event_jComboBoxEmployeesItemStateChanged
+    {//GEN-HEADEREND:event_jComboBoxEmployeesItemStateChanged
         // Enable buttons
         addButton.setEnabled(false);
         deleteButton.setEnabled(true);
@@ -875,7 +874,7 @@ public class EmployeeFrame extends javax.swing.JFrame
         if (loading == 1) {
             return;
         }
-        if (jComboBox1.getSelectedIndex() == -1) {
+        if (jComboBoxEmployees.getSelectedIndex() == -1) {
             statusLabel.setText("No record selected.");
             statusLabel.setForeground(Color.ORANGE);
 
@@ -883,10 +882,10 @@ public class EmployeeFrame extends javax.swing.JFrame
         else    
         {
             if (mapWithKeyRadioButton.isSelected()) {
-                e = (Employee) empByName.get((String) jComboBox1.getSelectedItem());
+                e = (Employee) empByName.get((String) jComboBoxEmployees.getSelectedItem());
             }
             else {
-                e = (Employee) emp.get((Long) jComboBox1.getSelectedItem());
+                e = (Employee) emp.get((Long) jComboBoxEmployees.getSelectedItem());
             }
             // Set status message
             String recordInfo = "You are viewing the record for ";
@@ -903,7 +902,7 @@ public class EmployeeFrame extends javax.swing.JFrame
             }
             statusLabel.setText(recordInfo);
         }
-    }//GEN-LAST:event_jComboBox1ItemStateChanged
+    }//GEN-LAST:event_jComboBoxEmployeesItemStateChanged
 
     private void exitButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_exitButtonActionPerformed
     {//GEN-HEADEREND:event_exitButtonActionPerformed
@@ -912,7 +911,7 @@ public class EmployeeFrame extends javax.swing.JFrame
 
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_deleteButtonActionPerformed
     {//GEN-HEADEREND:event_deleteButtonActionPerformed
-        if( jComboBox1.getSelectedIndex() == -1 ) {
+        if( jComboBoxEmployees.getSelectedIndex() == -1 ) {
             statusLabel.setText( "No Employee has been selected to delete" );
             return;
         }
@@ -921,7 +920,7 @@ public class EmployeeFrame extends javax.swing.JFrame
                 long empNumber = Long.parseLong(empNumberTextField.getText());
                 emp.remove(empNumber, e);
             } else {
-                emp.remove( (Long) jComboBox1.getSelectedItem() );
+                emp.remove( (Long) jComboBoxEmployees.getSelectedItem() );
             }
             cmbKeys_build();
             statusLabel.setText( "Employee has been deleted from map! Click SAVE button to apply change(s) in employee record." );
@@ -1034,14 +1033,14 @@ public class EmployeeFrame extends javax.swing.JFrame
         Employee e;
         if( loading == 1 )
             return;
-        if( jComboBox1.getSelectedIndex() == -1 ) {
+        if( jComboBoxEmployees.getSelectedIndex() == -1 ) {
             statusLabel.setText( "Please select an employee record." );
         } else {
             if( mapWithKeyRadioButton.isSelected() ) {
-                e = (Employee) empByName.get((String) jComboBox1.getSelectedItem());
+                e = (Employee) empByName.get((String) jComboBoxEmployees.getSelectedItem());
             }
             else {
-                e = (Employee) emp.get((Long) jComboBox1.getSelectedItem());
+                e = (Employee) emp.get((Long) jComboBoxEmployees.getSelectedItem());
             }  
             e.setEmpNumber(Long.parseLong(empNumberTextField.getText()));
             e.setLastName(lastNameTextField.getText());
@@ -1183,7 +1182,7 @@ public class EmployeeFrame extends javax.swing.JFrame
     private javax.swing.JButton forwardButton;
     private javax.swing.JTextField genderTextField;
     private javax.swing.JTextField hireDateTextField;
-    private javax.swing.JComboBox jComboBox1;
+    private javax.swing.JComboBox jComboBoxEmployees;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1285,7 +1284,7 @@ public class EmployeeFrame extends javax.swing.JFrame
 
     private void enableEmployeeSelection(boolean status)
     {
-        jComboBox1.setEnabled(status);
+        jComboBoxEmployees.setEnabled(status);
         previousButton.setEnabled(status);
         forwardButton.setEnabled(status);
     }
