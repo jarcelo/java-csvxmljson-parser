@@ -162,7 +162,6 @@ public class Employee
         this.termDate = termDate;
     }
     
-    // Override toString method
     @Override
     public String toString()
     {
