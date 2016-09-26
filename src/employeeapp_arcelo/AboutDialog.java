@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package employeeapp_arcelo;
-
+// Provides information about the creator of this project
 /**
  *
  * @author josepharcelo
