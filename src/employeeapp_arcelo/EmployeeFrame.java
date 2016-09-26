@@ -870,7 +870,7 @@ public class EmployeeFrame extends javax.swing.JFrame
         // Clear status label
         statusLabel.setText("");
         
-        //Employee e;
+        Employee newEmp;
         if (loading == 1) {
             return;
         }
@@ -882,24 +882,15 @@ public class EmployeeFrame extends javax.swing.JFrame
         else    
         {
             if (mapWithKeyRadioButton.isSelected()) {
-                e = (Employee) empByName.get((String) jComboBoxEmployees.getSelectedItem());
+                newEmp = (Employee) empByName.get((String) jComboBoxEmployees.getSelectedItem());
             }
             else {
-                e = (Employee) emp.get((Long) jComboBoxEmployees.getSelectedItem());
+                newEmp = (Employee) emp.get((Long) jComboBoxEmployees.getSelectedItem());
             }
             // Set status message
             String recordInfo = "You are viewing the record for ";
-            DisplayValues(e);
-
-            if(e.getMiddleName().equalsIgnoreCase("null") || e.getMiddleName().isEmpty()) {
-                        //e.setMiddleName("");
-                recordInfo += e.getLastName() + ", " + e.getFirstName(); 
-            }
-            else
-            {
-                recordInfo += e.getLastName() + ", " + e.getFirstName() + " " +
-                    e.getMiddleName();
-            }
+            DisplayValues(newEmp);
+            recordInfo += newEmp.getLastName() + ", " + newEmp.getFirstName() + " " + newEmp.getMiddleName(); 
             statusLabel.setText(recordInfo);
         }
     }//GEN-LAST:event_jComboBoxEmployeesItemStateChanged
